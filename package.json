@@ -1,0 +1,17 @@
+{
+  "name": "elextric",
+  "version": "1.0.0",
+  "description": "Elextric Ltd - Engineering service firm website",
+  "private": true,
+  "scripts": {
+    "deploy": "vercel deploy"
+  },
+  "dependencies": {
+    "@vercel/analytics": "^1.4.1"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/omerkhan7210/elextric.git"
+  }
+}
