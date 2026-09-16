@@ -82,7 +82,7 @@
       .wrap {
         max-width: 1200px;
         margin: 0 auto;
-        padding: 0 32px;
+        padding: 32px;
       }
       @media (max-width: 720px) {
         .wrap {
@@ -281,17 +281,6 @@
       .mobile-menu {
         position: fixed;
         z-index: 80;
-      }
-      .search-flyout {
-        top: 0;
-        left: 0;
-        right: 0;
-        background: #fff;
-        border-bottom: 1px solid var(--line);
-        padding: 18px 0;
-        transform: translateY(-110%);
-        transition: transform 0.25s;
-        box-shadow: 0 12px 40px -20px rgba(10, 38, 71, 0.25);
       }
       .search-flyout.open {
         transform: translateY(0);
@@ -567,60 +556,309 @@
         flex-wrap: wrap;
         gap: 12px;
       }
-      footer {
+
+      /* ---------- Final CTA + form ---------- */
+      .cta-final {
+        background: var(--paper);
+      }
+      .cta-panel {
         background: var(--navy-deep);
-        color: rgba(255, 255, 255, 0.72);
-        padding: 56px 0 0;
-        font-size: 14px;
-      }
-      .footer-grid {
+        color: #fff;
+        border-radius: 14px;
+        padding: 60px;
         display: grid;
-        grid-template-columns: 1.4fr 1fr 1fr 1fr;
-        gap: 36px;
-        padding-bottom: 40px;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        grid-template-columns: 1fr 1.1fr;
+        gap: 56px;
+        align-items: center;
+        position: relative;
+        overflow: hidden;
       }
-      @media (max-width: 900px) {
-        .footer-grid {
-          grid-template-columns: 1fr 1fr;
-          gap: 28px;
+      .cta-panel::before {
+        content: "";
+        position: absolute;
+        right: -90px;
+        top: -110px;
+        width: 320px;
+        height: 320px;
+        border-radius: 50%;
+        background: radial-gradient(
+          circle,
+          rgba(63, 169, 224, 0.3) 0%,
+          rgba(63, 169, 224, 0) 70%
+        );
+      }
+      .cta-copy {
+        position: relative;
+        z-index: 1;
+      }
+      .cta-panel h2 {
+        font-size: clamp(24px, 3.4vw, 52px);
+        color: #fff;
+        max-width: 16ch;
+      }
+      .cta-panel > .cta-copy > p {
+        margin-top: 14px;
+        color: rgba(255, 255, 255, 0.75);
+        max-width: 38ch;
+        font-size: 15.5px;
+      }
+      .cta-contact {
+        margin-top: 28px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .cta-contact a {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 15.5px;
+        font-weight: 600;
+        color: #fff;
+      }
+      .cta-contact svg {
+        width: 17px;
+        height: 17px;
+        color: var(--sky);
+        flex-shrink: 0;
+      }
+      .cta-form {
+        position: relative;
+        z-index: 1;
+        background: #fff;
+        border-radius: 10px;
+        padding: 30px;
+      }
+      .cta-form .form-title {
+        font-family: "Space Grotesk", sans-serif;
+        font-size: 15px;
+        font-weight: 600;
+        color: var(--navy-deep);
+        margin-bottom: 4px;
+      }
+      .cta-form .form-sub {
+        font-size: 13px;
+        color: var(--steel);
+        margin-bottom: 20px;
+      }
+      .form-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+        margin-bottom: 14px;
+      }
+      .field {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+      .field label {
+        font-size: 12.5px;
+        font-weight: 600;
+        color: var(--navy);
+      }
+      .field input {
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        padding: 11px 13px;
+        font-size: 14.5px;
+        font-family: inherit;
+        color: var(--ink);
+        background: var(--paper);
+        transition:
+          border-color 0.2s ease,
+          background 0.2s ease;
+      }
+      .field input:focus {
+        outline: none;
+        border-color: var(--sky);
+        background: #fff;
+      }
+      .form-checkbox {
+        display: flex;
+        gap: 9px;
+        align-items: flex-start;
+        margin: 16px 0 18px;
+      }
+      .form-checkbox input {
+        margin-top: 3px;
+        accent-color: var(--sky);
+      }
+      .form-checkbox label {
+        font-size: 12px;
+        color: var(--steel);
+        line-height: 1.5;
+      }
+      .form-checkbox a {
+        color: var(--sky);
+        font-weight: 600;
+      }
+      .cta-form .btn-primary {
+        width: 100%;
+      }
+      @media (max-width: 860px) {
+        .cta-panel {
+          grid-template-columns: 1fr;
+          padding: 34px 24px;
         }
-      }
-      @media (max-width: 560px) {
-        .footer-grid {
+        .form-grid {
           grid-template-columns: 1fr;
         }
       }
-      .footer-brand p {
-        margin-top: 12px;
-        max-width: 32ch;
-        line-height: 1.55;
+
+      /* ---------- FAQ ---------- */
+      .faq {
+        background: #fff;
       }
-      .footer-grid h4 {
-        color: #fff;
-        font-size: 14px;
-        margin-bottom: 14px;
-        font-family: Inter, sans-serif;
+      .faq-list {
+        max-width: 760px;
+      }
+      .faq-item {
+        border-top: 1px solid var(--line);
+      }
+      .faq-item:last-child {
+        border-bottom: 1px solid var(--line);
+      }
+      .faq-item summary {
+        list-style: none;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        padding: 22px 4px;
+        cursor: pointer;
+        font-family: "Space Grotesk", sans-serif;
         font-weight: 600;
+        font-size: 16px;
+        color: var(--navy-deep);
       }
-      .footer-grid a {
+      .faq-item summary::-webkit-details-marker {
+        display: none;
+      }
+      .faq-item .plus {
+        flex-shrink: 0;
+        width: 26px;
+        height: 26px;
+        border-radius: 50%;
+        border: 1px solid var(--line);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--navy);
+        position: relative;
+      }
+      .faq-item .plus::before,
+      .faq-item .plus::after {
+        content: "";
+        position: absolute;
+        background: currentColor;
+      }
+      .faq-item .plus::before {
+        width: 10px;
+        height: 1.6px;
+      }
+      .faq-item .plus::after {
+        width: 1.6px;
+        height: 10px;
+        transition: transform 0.2s ease;
+      }
+      .faq-item[open] .plus::after {
+        transform: rotate(90deg);
+      }
+      .faq-item[open] .plus {
+        background: var(--navy-deep);
+        color: #fff;
+        border-color: var(--navy-deep);
+      }
+      .faq-item p {
+        padding: 0 4px 24px;
+        color: var(--steel);
+        font-size: 15px;
+        max-width: 62ch;
+      }
+
+      /* ---------- Footer ---------- */
+      footer {
+        background: var(--navy-deep);
+        color: rgba(255, 255, 255, 0.72);
+        padding: 60px 0 26px;
+      }
+      .footer-grid {
+        display: grid;
+        grid-template-columns: 1.4fr 0.9fr 0.9fr 1fr;
+        gap: 40px;
+        padding-bottom: 40px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+      }
+      .footer-grid h5 {
+        color: #fff;
+        font-size: 13.5px;
+        font-weight: 600;
+        margin-bottom: 16px;
+      }
+      .footer-grid a,
+      .footer-grid p {
         display: block;
-        margin-bottom: 8px;
-        opacity: 0.8;
-        transition: opacity 0.15s;
+        font-size: 14px;
+        margin-bottom: 10px;
+        color: rgba(255, 255, 255, 0.68);
       }
       .footer-grid a:hover {
-        opacity: 1;
-        color: #fff;
+        color: var(--sky);
+      }
+      .footer-logo {
+        margin-bottom: -20px;
+      }
+      .footer-logo img {
+        height: 124px;
+        width: auto;
+        object-fit: cover;
+        filter: brightness(0) invert(1);
+      }
+      .footer-social {
+        display: flex;
+        gap: 10px;
+        margin-top: 18px;
+      }
+      .footer-social a {
+        width: 34px;
+        height: 34px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0;
+        flex-shrink: 0;
+      }
+      .footer-social svg {
+        width: 16px;
+        height: 16px;
+      }
+
+      .footer-column {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+      }
+      @media (max-width: 800px) {
+        .footer-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+      @media (max-width: 520px) {
+        .footer-grid {
+          grid-template-columns: 1fr;
+        }
       }
       .footer-bottom {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 18px 0;
-        font-size: 13px;
+        padding-top: 22px;
+        font-size: 12.5px;
+        color: rgba(255, 255, 255, 0.45);
         flex-wrap: wrap;
-        gap: 10px;
+        gap: 12px;
       }
       .reveal {
         opacity: 0;
@@ -632,6 +870,879 @@
       .reveal.in {
         opacity: 1;
         transform: none;
+      }
+      /* ==================================================
+         MEGA MENU (desktop)
+      ================================================== */
+      .nav-item {
+        position: relative;
+      }
+      .nav-item > .nav-trigger {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-size: 14.5px;
+        font-weight: 500;
+        color: var(--navy);
+        padding: 4px 0;
+        font-family: inherit;
+      }
+      .nav-item > .nav-trigger svg {
+        width: 13px;
+        height: 13px;
+        transition: transform 0.2s ease;
+      }
+      .nav-item.open > .nav-trigger svg,
+      .nav-item:hover > .nav-trigger svg {
+        transform: rotate(180deg);
+      }
+      .mega-panel {
+        position: absolute;
+        top: calc(100% + 0px);
+        left: 160%;
+        transform: translateX(-50%) translateY(6px);
+        width: min(880px, 82vw);
+        background: #fff;
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        box-shadow: 0 24px 60px -20px rgba(10, 38, 71, 0.28);
+        padding: 30px;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr) 220px;
+        gap: 8px;
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transition:
+          opacity 0.2s ease,
+          transform 0.2s ease,
+          visibility 0.2s;
+        z-index: 70;
+      }
+      .nav-item:hover .mega-panel,
+      .nav-item.open .mega-panel {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+        transform: translateX(-50%) translateY(0);
+      }
+      .mega-col h5 {
+        font-family: "Space Grotesk", sans-serif;
+        font-size: 12px;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        color: var(--sky);
+        font-weight: 600;
+        margin-bottom: 14px;
+      }
+      .mega-col a {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 14px;
+        color: var(--ink);
+        padding: 9px 8px;
+        margin: 0 -8px;
+        border-radius: 6px;
+        transition: background 0.15s ease;
+      }
+      .mega-col a:hover {
+        background: var(--sky-pale);
+        color: var(--navy-deep);
+      }
+      .mega-col a .mega-ic {
+        width: 30px;
+        height: 30px;
+        flex-shrink: 0;
+        border-radius: 7px;
+        background: var(--sky-pale);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--navy-deep);
+      }
+      .mega-col a .mega-ic svg {
+        width: 15px;
+        height: 15px;
+      }
+      .mega-promo {
+        border-radius: 10px;
+        overflow: hidden;
+        position: relative;
+        background: var(--navy-deep);
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        min-height: 230px;
+      }
+      .mega-promo img {
+        position: absolute;
+        inset: 0;
+        opacity: 0.55;
+      }
+      .mega-promo::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          0deg,
+          rgba(10, 38, 71, 0.95) 10%,
+          rgba(10, 38, 71, 0.25) 80%
+        );
+      }
+      .mega-promo-copy {
+        position: relative;
+        z-index: 1;
+        padding: 18px;
+        color: #fff;
+      }
+      .mega-promo-copy p.tag {
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: var(--sky);
+        font-weight: 700;
+        margin-bottom: 6px;
+      }
+      .mega-promo-copy h5 {
+        font-size: 16px;
+        color: #fff;
+        margin-bottom: 10px;
+        line-height: 1.3;
+      }
+      .mega-promo-copy a.btn {
+        padding: 8px 14px;
+        font-size: 12.5px;
+      }
+      .mega-brands-row {
+        grid-column: 1 / -1;
+        margin-top: 6px;
+        padding-top: 20px;
+        border-top: 1px solid var(--line);
+        display: flex;
+        align-items: center;
+        gap: 18px;
+        flex-wrap: wrap;
+      }
+      .mega-brands-row span.lbl {
+        font-size: 11.5px;
+        font-weight: 600;
+        color: var(--steel);
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+      }
+      .mega-brands-row a {
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--navy);
+        padding: 5px 12px;
+        border: 1px solid var(--line);
+        border-radius: 100px;
+        transition:
+          border-color 0.15s ease,
+          color 0.15s ease;
+      }
+      .mega-brands-row a:hover {
+        border-color: var(--sky);
+        color: var(--sky);
+      }
+      @media (max-width: 1180px) {
+        .mega-panel {
+          width: min(720px, 90vw);
+          grid-template-columns: repeat(3, 1fr);
+        }
+        .mega-promo {
+          display: none;
+        }
+      }
+
+      /* ==================================================
+         MULTI-STEP FORM
+      ================================================== */
+      .form-steps-indicator {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 22px;
+      }
+      .fsi-step {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        flex: 1;
+      }
+      .fsi-dot {
+        width: 26px;
+        height: 26px;
+        border-radius: 50%;
+        background: var(--paper);
+        border: 1.5px solid var(--line);
+        color: var(--steel);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+        font-weight: 700;
+        flex-shrink: 0;
+        transition:
+          background 0.2s ease,
+          border-color 0.2s ease,
+          color 0.2s ease;
+      }
+      .fsi-step.active .fsi-dot,
+      .fsi-step.done .fsi-dot {
+        background: var(--sky);
+        border-color: var(--sky);
+        color: #08233f;
+      }
+      .fsi-line {
+        height: 2px;
+        flex: 1;
+        background: var(--line);
+      }
+      .fsi-step.done .fsi-line {
+        background: var(--sky);
+      }
+      .form-step {
+        display: none;
+      }
+      .form-step.active {
+        display: block;
+      }
+      .service-type-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        margin-bottom: 16px;
+      }
+      .service-type-opt {
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        padding: 12px 13px;
+        cursor: pointer;
+        font-size: 13.5px;
+        font-weight: 600;
+        color: var(--navy);
+        background: var(--paper);
+        transition:
+          border-color 0.15s ease,
+          background 0.15s ease;
+      }
+      .service-type-opt input {
+        margin-right: 7px;
+        accent-color: var(--sky);
+      }
+      .service-type-opt:has(input:checked) {
+        border-color: var(--sky);
+        background: var(--sky-pale);
+        color: var(--navy-deep);
+      }
+      .field textarea {
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        padding: 11px 13px;
+        font-size: 14.5px;
+        font-family: inherit;
+        color: var(--ink);
+        background: var(--paper);
+        resize: vertical;
+        min-height: 90px;
+      }
+      .field textarea:focus {
+        outline: none;
+        border-color: var(--sky);
+        background: #fff;
+      }
+      .field.full {
+        grid-column: 1 / -1;
+      }
+      .form-nav-btns {
+        display: flex;
+        gap: 10px;
+      }
+      .form-nav-btns .btn {
+        flex: 1;
+      }
+      .form-step-label {
+        font-size: 12px;
+        font-weight: 700;
+        color: var(--sky);
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        margin-bottom: 6px;
+      }
+      @media (max-width: 480px) {
+        .cta-form {
+          padding: 22px 18px;
+        }
+        .service-type-grid {
+          grid-template-columns: 1fr;
+        }
+        .service-actions {
+          flex-direction: column;
+          align-items: stretch;
+        }
+        .service-actions .btn,
+        .service-actions .btn-quote {
+          width: 100%;
+          justify-content: center;
+        }
+        .form-nav-btns {
+          flex-direction: column;
+        }
+        .fsi-dot {
+          width: 22px;
+          height: 22px;
+          font-size: 11px;
+        }
+        .team-stats {
+          gap: 20px;
+        }
+        .cart-drawer {
+          width: 100%;
+        }
+      }
+
+      /* ==================================================
+         MOBILE MENU DRAWER
+      ================================================== */
+      .mobile-menu-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(10, 38, 71, 0.5);
+        z-index: 90;
+        opacity: 0;
+        visibility: hidden;
+        transition:
+          opacity 0.3s ease,
+          visibility 0.3s;
+      }
+      .mobile-menu-overlay.open {
+        opacity: 1;
+        visibility: visible;
+      }
+      .mobile-menu {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        width: min(340px, 88vw);
+        background: #fff;
+        z-index: 95;
+        transform: translateX(100%);
+        transition: transform 0.32s cubic-bezier(0.22, 0.61, 0.36, 1);
+        display: flex;
+        flex-direction: column;
+        box-shadow: -18px 0 50px -20px rgba(10, 38, 71, 0.4);
+      }
+      .mobile-menu.open {
+        transform: translateX(0);
+      }
+      .mobile-menu-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 18px 20px;
+        border-bottom: 1px solid var(--line);
+      }
+      .mobile-menu-head img {
+        height: 30px;
+        width: auto;
+        object-fit: contain;
+      }
+      .mobile-menu-head button {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        border: none;
+        background: var(--paper);
+        color: var(--navy-deep);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+      }
+      .mobile-menu-head button svg {
+        width: 18px;
+        height: 18px;
+      }
+      .mobile-menu-body {
+        flex: 1;
+        overflow-y: auto;
+        padding: 10px 8px 24px;
+      }
+      .mm-link {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 15px 14px;
+        font-size: 15.5px;
+        font-weight: 600;
+        color: var(--navy-deep);
+        border-bottom: 1px solid var(--line);
+      }
+      .mm-link svg {
+        width: 15px;
+        height: 15px;
+        color: var(--steel);
+        transition: transform 0.25s ease;
+        flex-shrink: 0;
+      }
+      .mm-group.open .mm-link svg {
+        transform: rotate(180deg);
+      }
+      .mm-submenu {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+        background: var(--paper);
+        border-radius: 8px;
+      }
+      .mm-group.open .mm-submenu {
+        max-height: 900px;
+      }
+      .mm-submenu-inner {
+        padding: 6px 10px 14px;
+      }
+      .mm-submenu-inner h6 {
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        color: var(--sky);
+        font-weight: 700;
+        margin: 14px 8px 6px;
+      }
+      .mm-submenu-inner h6:first-child {
+        margin-top: 8px;
+      }
+      .mm-submenu-inner a {
+        display: block;
+        padding: 9px 8px;
+        font-size: 14px;
+        color: var(--ink);
+        border-radius: 6px;
+      }
+      .mm-submenu-inner a:hover {
+        background: #fff;
+      }
+      .mobile-menu-foot {
+        padding: 16px 20px 22px;
+        border-top: 1px solid var(--line);
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .mobile-menu-foot a.phone {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-weight: 700;
+        color: var(--navy-deep);
+        font-size: 15px;
+        justify-content: center;
+        margin-bottom: 4px;
+      }
+      .mobile-menu-foot a.phone svg {
+        width: 15px;
+        height: 15px;
+        color: var(--sky);
+      }
+      @media (max-width: 980px) {
+        body.menu-lock {
+          overflow: hidden;
+        }
+      }
+
+      /* ---------- Top information bar ---------- */
+      .topbar {
+        background: var(--navy-deep);
+        color: rgba(255, 255, 255, 0.82);
+        font-size: 13px;
+      }
+      .topbar .wrap {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 38px;
+        gap: 20px;
+      }
+      .topbar-left {
+        display: flex;
+        align-items: center;
+        gap: 22px;
+      }
+      .topbar a,
+      .topbar span {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        white-space: nowrap;
+      }
+      .topbar a:hover {
+        color: #fff;
+      }
+      .topbar svg {
+        width: 13px;
+        height: 13px;
+        flex-shrink: 0;
+        color: var(--sky);
+      }
+      .topbar-right {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+        color: rgba(255, 255, 255, 0.62);
+      }
+      @media (max-width: 760px) {
+        .topbar-hours {
+          display: none;
+        }
+      }
+      @media (max-width: 560px) {
+        .topbar-left span:last-child {
+          display: none;
+        }
+      }
+
+      /* ---------- Header ---------- */
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 60;
+        background: rgba(243, 245, 248, 0.96);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid var(--line);
+        transition: box-shadow 0.3s ease;
+      }
+      header.scrolled {
+        box-shadow: 0 8px 24px -18px rgba(10, 38, 71, 0.35);
+      }
+      .header-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 84px;
+        gap: 24px;
+      }
+      .logo-slot img {
+        height: 42px;
+        width: auto;
+        object-fit: contain;
+      }
+      nav {
+        display: flex;
+        align-items: center;
+        gap: 30px;
+      }
+      nav a {
+        font-size: 14.5px;
+        color: var(--navy);
+        font-weight: 500;
+        position: relative;
+        padding: 4px 0;
+      }
+      nav a::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 2px;
+        background: var(--sky);
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.25s ease;
+      }
+      nav a:hover::after {
+        transform: scaleX(1);
+      }
+      .header-cta {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .phone-link {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 14.5px;
+        font-weight: 600;
+        color: var(--navy-deep);
+        white-space: nowrap;
+      }
+      .phone-link svg {
+        width: 16px;
+        height: 16px;
+        flex-shrink: 0;
+        color: var(--sky);
+      }
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 22px;
+        font-size: 14.5px;
+        font-weight: 600;
+        border-radius: 4px;
+        white-space: nowrap;
+        cursor: pointer;
+        border: 1px solid transparent;
+        transition:
+          background 0.2s ease,
+          color 0.2s ease,
+          border-color 0.2s ease,
+          transform 0.2s ease;
+      }
+      .btn-primary {
+        background: var(--sky);
+        color: #08233f;
+      }
+      .btn-primary:hover {
+        background: #2e93c9;
+        transform: translateY(-1px);
+      }
+      .btn-outline {
+        border-color: var(--navy);
+        color: var(--navy);
+      }
+      .btn-outline:hover {
+        background: var(--navy);
+        color: #fff;
+      }
+      .btn-ghost-light {
+        border: 1px solid rgba(255, 255, 255, 0.55);
+        color: #fff;
+      }
+      .btn-ghost-light:hover {
+        background: rgba(255, 255, 255, 0.14);
+      }
+
+      /* icon buttons: search / account / cart */
+      .icon-btn {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        border: 1px solid transparent;
+        background: none;
+        color: var(--navy-deep);
+        cursor: pointer;
+        transition: background 0.2s ease;
+      }
+      .icon-btn:hover {
+        background: rgba(10, 38, 71, 0.07);
+      }
+      .icon-btn svg {
+        width: 20px;
+        height: 20px;
+      }
+      .cart-count {
+        position: absolute;
+        top: 2px;
+        right: 2px;
+        min-width: 16px;
+        height: 16px;
+        padding: 0 3px;
+        border-radius: 50px;
+        background: var(--sky);
+        color: #08233f;
+        font-size: 10px;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        line-height: 1;
+      }
+      .header-icons {
+        display: flex;
+        align-items: center;
+        gap: 2px;
+        border-left: 1px solid var(--line);
+        margin-left: 10px;
+        padding-left: 10px;
+      }
+      .mobile-toggle {
+        display: none;
+        background: none;
+        border: none;
+        cursor: pointer;
+        color: var(--navy);
+      }
+      @media (max-width: 980px) {
+        nav {
+          display: none;
+        }
+        .mobile-toggle {
+          display: block;
+        }
+        .header-cta .btn-outline {
+          display: none;
+        }
+      }
+      @media (max-width: 620px) {
+        .header-cta .btn-primary {
+          display: none;
+        }
+      }
+
+      /* ---------- Search flyout ---------- */
+      .search-flyout {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: #fff;
+        border-bottom: 1px solid var(--line);
+        box-shadow: 0 20px 32px -22px rgba(10, 38, 71, 0.35);
+        overflow: hidden;
+        max-height: 0;
+        transition: max-height 0.3s ease;
+      }
+      .search-flyout.open {
+        max-height: 120px;
+      }
+      .search-flyout .wrap {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        padding: 22px 32px;
+      }
+      .search-flyout input {
+        flex: 1;
+        border: none;
+        outline: none;
+        font-size: 17px;
+        font-family: inherit;
+        color: var(--ink);
+        background: none;
+      }
+      .search-flyout svg {
+        width: 20px;
+        height: 20px;
+        color: var(--steel);
+        flex-shrink: 0;
+      }
+      .search-flyout button.close-search {
+        background: none;
+        border: none;
+        cursor: pointer;
+        color: var(--steel);
+        width: 28px;
+        height: 28px;
+      }
+
+      /* ---------- Cart drawer ---------- */
+      .drawer-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(10, 20, 35, 0.5);
+        z-index: 90;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s ease;
+      }
+      .drawer-overlay.open {
+        opacity: 1;
+        pointer-events: auto;
+      }
+      .cart-drawer {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        width: min(420px, 92vw);
+        background: #fff;
+        z-index: 95;
+        display: flex;
+        flex-direction: column;
+        transform: translateX(100%);
+        transition: transform 0.35s cubic-bezier(0.22, 0.61, 0.36, 1);
+        box-shadow: -20px 0 50px -20px rgba(10, 38, 71, 0.4);
+      }
+      .cart-drawer.open {
+        transform: translateX(0);
+      }
+      .cart-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 22px 26px;
+        border-bottom: 1px solid var(--line);
+      }
+      .cart-head h3 {
+        font-size: 18px;
+      }
+      .cart-head button {
+        background: none;
+        border: none;
+        cursor: pointer;
+        color: var(--navy);
+        width: 30px;
+        height: 30px;
+      }
+      .cart-items {
+        flex: 1;
+        overflow-y: auto;
+        padding: 10px 26px;
+      }
+      .cart-item {
+        display: grid;
+        grid-template-columns: 68px 1fr auto;
+        gap: 14px;
+        padding: 18px 0;
+        border-bottom: 1px solid var(--line);
+        align-items: center;
+      }
+      .cart-item .thumb {
+        width: 68px;
+        height: 68px;
+        border-radius: 6px;
+        overflow: hidden;
+        background: var(--sky-pale);
+      }
+      .cart-item h4 {
+        font-family: "Inter", sans-serif;
+        font-size: 14.5px;
+        font-weight: 600;
+        color: var(--navy-deep);
+        margin-bottom: 4px;
+      }
+      .cart-item .meta {
+        font-size: 13px;
+        color: var(--steel);
+      }
+      .cart-item .price {
+        font-weight: 600;
+        color: var(--navy-deep);
+        font-size: 14.5px;
+        white-space: nowrap;
+      }
+      .cart-foot {
+        padding: 22px 26px 26px;
+        border-top: 1px solid var(--line);
+      }
+      .cart-subtotal {
+        display: flex;
+        justify-content: space-between;
+        font-size: 15px;
+        font-weight: 600;
+        color: var(--navy-deep);
+        margin-bottom: 16px;
+      }
+      .cart-foot .btn {
+        width: 100%;
+        margin-bottom: 10px;
+      }
+      .cart-note {
+        font-size: 12.5px;
+        color: var(--steel);
+        text-align: center;
       }
     </style>
   </head>
@@ -1297,70 +2408,565 @@
         </div>
       </section>
 
-      <section class="cta-section">
-        <div class="wrap reveal">
-          <h2>Need a visit or a quote?</h2>
-          <p>
-            Tell us the model and the issue (or the room size if you’re planning
-            a new cellar). We’ll advise the next step and arrange attendance.
-          </p>
-          <div class="actions">
-            <a href="tel:02032868525" class="btn btn-navy">0203 286 8525</a>
-            <a href="https://elextric.co.uk/contact/" class="btn btn-ghost"
-              >Contact form</a
-            >
+      <!-- FINAL CTA WITH FORM -->
+      <section class="cta-final" id="contact">
+        <div class="wrap">
+          <div class="cta-panel reveal">
+            <div class="cta-copy">
+              <h2>Tell us what needs fixing, fitting or installing.</h2>
+              <p>
+                Fill in the form and a member of the team will come back to you
+                with pricing and availability or reach us directly using the
+                details below.
+              </p>
+              <div class="cta-contact">
+                <a href="tel:02032868525">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                  >
+                    <path
+                      d="M6.6 10.8a15.6 15.6 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 9 9 0 0 0 2.9.46 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A16 16 0 0 1 3 5a1 1 0 0 1 1-1h3.3a1 1 0 0 1 1 1 9 9 0 0 0 .46 2.9 1 1 0 0 1-.25 1z"
+                    />
+                  </svg>
+                  0203 286 8525
+                </a>
+                <a href="mailto:info@elextric.co.uk">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                  >
+                    <path
+                      d="M4 5h16a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Z"
+                    />
+                    <path d="m3.5 6 8.5 6.5L20.5 6" />
+                  </svg>
+                  info@elextric.co.uk
+                </a>
+              </div>
+            </div>
+            <form class="cta-form" id="cta-form" onsubmit="return false;">
+              <p class="form-title">Contact us today</p>
+              <p class="form-sub">
+                Please share as much information as possible — it helps us give
+                you the best service.
+              </p>
+
+              <div class="form-steps-indicator">
+                <div class="fsi-step active" data-fsi="1">
+                  <div class="fsi-dot">1</div>
+                  <div class="fsi-line"></div>
+                </div>
+                <div class="fsi-step" data-fsi="2">
+                  <div class="fsi-dot">2</div>
+                  <div class="fsi-line"></div>
+                </div>
+                <div class="fsi-step" data-fsi="3">
+                  <div class="fsi-dot">3</div>
+                </div>
+              </div>
+
+              <!-- STEP 1 — contact details -->
+              <div class="form-step active" data-step="1">
+                <p class="form-step-label">Step 1 · Your details</p>
+                <div class="form-grid">
+                  <div class="field">
+                    <label for="cf-name">Full Name</label>
+                    <input
+                      id="cf-name"
+                      type="text"
+                      placeholder="Jane Smith"
+                      required
+                    />
+                  </div>
+                  <div class="field">
+                    <label for="cf-email">Email</label>
+                    <input
+                      id="cf-email"
+                      type="email"
+                      placeholder="jane@email.com"
+                      required
+                    />
+                  </div>
+                  <div class="field">
+                    <label for="cf-postcode">Installation Postcode</label>
+                    <input
+                      id="cf-postcode"
+                      type="text"
+                      placeholder="SW1A 1AA"
+                      required
+                    />
+                  </div>
+                  <div class="field">
+                    <label for="cf-phone">Phone / Mobile</label>
+                    <input
+                      id="cf-phone"
+                      type="tel"
+                      placeholder="07000 000000"
+                      required
+                    />
+                  </div>
+                </div>
+                <div class="form-nav-btns">
+                  <button
+                    type="button"
+                    class="btn btn-primary"
+                    data-next="2"
+                    style="color: #08233f"
+                  >
+                    Next
+                  </button>
+                </div>
+              </div>
+
+              <!-- STEP 2 — what & when -->
+              <div class="form-step" data-step="2">
+                <p class="form-step-label">Step 2 · What do you need?</p>
+                <div class="service-type-grid">
+                  <label class="service-type-opt">
+                    <input
+                      type="radio"
+                      name="cf-service"
+                      value="Electrical"
+                      checked
+                    />
+                    Electrical
+                  </label>
+                  <label class="service-type-opt">
+                    <input
+                      type="radio"
+                      name="cf-service"
+                      value="Wine Conditioning"
+                    />
+                    Wine Conditioning
+                  </label>
+                  <label class="service-type-opt">
+                    <input
+                      type="radio"
+                      name="cf-service"
+                      value="Refrigeration"
+                    />
+                    Refrigeration
+                  </label>
+                  <label class="service-type-opt">
+                    <input
+                      type="radio"
+                      name="cf-service"
+                      value="Not sure yet"
+                    />
+                    Not sure yet
+                  </label>
+                </div>
+                <div class="form-grid">
+                  <div class="field">
+                    <label for="cf-property">Property Type</label>
+                    <select
+                      id="cf-property"
+                      style="
+                        border: 1px solid var(--line);
+                        border-radius: 6px;
+                        padding: 11px 13px;
+                        font-size: 14.5px;
+                        font-family: inherit;
+                        color: var(--ink);
+                        background: var(--paper);
+                      "
+                    >
+                      <option>Domestic</option>
+                      <option>Commercial</option>
+                    </select>
+                  </div>
+                  <div class="field">
+                    <label for="cf-when">Preferred Contact Time</label>
+                    <select
+                      id="cf-when"
+                      style="
+                        border: 1px solid var(--line);
+                        border-radius: 6px;
+                        padding: 11px 13px;
+                        font-size: 14.5px;
+                        font-family: inherit;
+                        color: var(--ink);
+                        background: var(--paper);
+                      "
+                    >
+                      <option>Morning (8am–12pm)</option>
+                      <option>Afternoon (12pm–4pm)</option>
+                      <option>Evening (4pm–6pm)</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-nav-btns">
+                  <button type="button" class="btn btn-outline" data-prev="1">
+                    Previous
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn-primary"
+                    data-next="3"
+                    style="color: #08233f"
+                  >
+                    Next
+                  </button>
+                </div>
+              </div>
+
+              <!-- STEP 3 — details & consent -->
+              <div class="form-step" data-step="3">
+                <p class="form-step-label">Step 3 · Tell us more</p>
+                <div class="form-grid">
+                  <div class="field full">
+                    <label for="cf-details">
+                      Please share as much information as possible with us; this
+                      will ensure we provide you with the best service.
+                    </label>
+                    <textarea
+                      id="cf-details"
+                      placeholder="Tell us what needs fixing, fitting or installing…"
+                    ></textarea>
+                  </div>
+                </div>
+                <div class="form-checkbox">
+                  <input type="checkbox" id="cf-consent" />
+                  <label for="cf-consent">
+                    By checking this box you agree to Elextric Ltd contacting
+                    you, either by email or telephone, in response to your
+                    specific enquiry. We will never share your information with
+                    third parties. See the
+                    <a
+                      href="https://elextric.co.uk/privacy-policy/"
+                      target="_blank"
+                      rel="noopener"
+                      >privacy policy</a
+                    >.
+                  </label>
+                </div>
+                <div class="form-nav-btns">
+                  <button type="button" class="btn btn-outline" data-prev="2">
+                    Previous
+                  </button>
+                  <button type="submit" class="btn btn-primary" id="cf-submit">
+                    Send My Enquiry
+                  </button>
+                </div>
+              </div>
+
+              <p
+                id="cf-success"
+                style="
+                  display: none;
+                  text-align: center;
+                  color: var(--navy-deep);
+                  font-weight: 600;
+                  font-size: 14.5px;
+                  padding: 14px 0;
+                "
+              >
+                Thanks — your enquiry has been noted. A member of the team will
+                be in touch shortly.
+              </p>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section class="faq">
+        <div class="wrap">
+          <div class="section-head reveal">
+            <h2>Got questions?</h2>
+            <p class="lede">A few things clients ask us most often.</p>
+          </div>
+          <div class="faq-list reveal">
+            <details class="faq-item" open>
+              <summary>
+                What does Elextric do?<span class="plus"></span>
+              </summary>
+              <p>
+                Elextric supplies, installs, repairs and maintains wine
+                conditioning units (WineMaster, EuroCave, TeknoPoint, Friax,
+                Wine Guardian) and specialist refrigeration (Corner Fridge,
+                Norcool), alongside domestic and commercial electrical work
+                across London.
+              </p>
+            </details>
+            <details class="faq-item">
+              <summary>
+                Where is Elextric located?<span class="plus"></span>
+              </summary>
+              <p>
+                We're based in London and cover the capital and South East,
+                travelling further afield for specialist wine conditioning and
+                refrigeration work when needed.
+              </p>
+            </details>
+            <details class="faq-item">
+              <summary>
+                How can I contact Elextric?<span class="plus"></span>
+              </summary>
+              <p>
+                Call 0203 286 8525, email info@elextric.co.uk, or fill in the
+                enquiry form above and a member of the team will come back to
+                you with pricing and availability.
+              </p>
+            </details>
+            <details class="faq-item">
+              <summary>
+                Are you certified and experienced?<span class="plus"></span>
+              </summary>
+              <p>
+                Yes — our engineers are NAPIT, REFCOM and TrustMark accredited,
+                and our lead engineer has worked directly with WineMaster's
+                dealer network since 2015.
+              </p>
+            </details>
           </div>
         </div>
       </section>
     </main>
-
     <footer>
       <div class="wrap">
         <div class="footer-grid">
+          <!-- BRAND / CONTACT -->
           <div class="footer-brand">
-            <a href="https://elextric.co.uk/" class="logo" style="color: #fff"
-              ><span>Elextric</span></a
-            >
+            <div class="footer-logo">
+              <img
+                src="https://elextric.co.uk/wp-content/uploads/2022/10/1.png"
+                alt="Elextric Ltd logo"
+              />
+            </div>
             <p>
-              Specialist supply, installation and repair of wine conditioning
-              equipment and niche refrigeration across London and the UK.
+              We create a single point of contact for every client, working
+              together to ensure that every part of the installation meets all
+              of the relevant technical & safety standards and codes of
+              practice.
             </p>
+            <a href="mailto:info@elextric.co.uk" class="footer-contact">
+              <span>✉</span>
+              info@elextric.co.uk
+            </a>
+
+            <a href="https://elextric.co.uk/contact/" class="footer-contact">
+              <span>➤</span>
+              Contact us page
+            </a>
+
+            <div class="footer-social">
+              <!-- X -->
+              <a
+                href="https://twitter.com/elextric_"
+                target="_blank"
+                rel="noopener"
+                aria-label="X (Twitter)"
+                style="background: #000"
+              >
+                <svg viewBox="0 0 24 24" fill="#fff">
+                  <path
+                    d="M18.24 3H21l-6.5 7.43L22 21h-6.19l-4.84-6.33L5.4 21H2.6l6.96-7.95L2 3h6.34l4.37 5.79L18.24 3Zm-1.08 16.17h1.53L7.9 4.74H6.26l10.9 14.43Z"
+                  />
+                </svg>
+              </a>
+
+              <!-- YouTube -->
+              <a
+                href="https://www.youtube.com/@elextricltd"
+                target="_blank"
+                rel="noopener"
+                aria-label="YouTube"
+                style="background: #ff0000"
+              >
+                <svg viewBox="0 0 24 24" fill="#fff">
+                  <path
+                    d="M22 12s0-3.2-.4-4.7a2.5 2.5 0 0 0-1.8-1.8C18.3 5 12 5 12 5s-6.3 0-7.8.5a2.5 2.5 0 0 0-1.8 1.8C2 8.8 2 12 2 12s0 3.2.4 4.7a2.5 2.5 0 0 0 1.8 1.8C5.7 19 12 19 12 19s6.3 0 7.8-.5a2.5 2.5 0 0 0 1.8-1.8c.4-1.5.4-4.7.4-4.7ZM10 15.2V8.8L15.8 12 10 15.2Z"
+                  />
+                </svg>
+              </a>
+
+              <!-- LinkedIn -->
+              <a
+                href="https://www.linkedin.com/company/elextric"
+                target="_blank"
+                rel="noopener"
+                aria-label="LinkedIn"
+                style="background: #0a66c2"
+              >
+                <svg viewBox="0 0 24 24" fill="#fff">
+                  <path
+                    d="M6.94 8.5H3.56V20h3.38V8.5ZM5.25 3a2 2 0 1 0 0 4 2 2 0 0 0 0-4ZM20.44 20h-3.37v-6.1c0-1.46-.03-3.34-2.03-3.34-2.04 0-2.35 1.6-2.35 3.24V20H9.32V8.5h3.24v1.57h.05c.45-.85 1.56-1.75 3.2-1.75 3.42 0 4.63 2.25 4.63 5.17V20Z"
+                  />
+                </svg>
+              </a>
+
+              <!-- Facebook -->
+              <a
+                href="https://www.facebook.com/elextricltd"
+                target="_blank"
+                rel="noopener"
+                aria-label="Facebook"
+                style="background: #1877f2"
+              >
+                <svg viewBox="0 0 24 24" fill="#fff">
+                  <path
+                    d="M13.5 21v-7.9h2.65l.4-3.08H13.5V8.06c0-.89.25-1.5 1.52-1.5h1.63V3.84C16.36 3.8 15.36 3.7 14.2 3.7c-2.34 0-3.95 1.43-3.95 4.05v2.27H7.6v3.08h2.65V21h3.25Z"
+                  />
+                </svg>
+              </a>
+
+              <!-- Pinterest -->
+              <a
+                href="https://uk.pinterest.com/elextricltd/"
+                target="_blank"
+                rel="noopener"
+                aria-label="Pinterest"
+                style="background: #e60023"
+              >
+                <svg viewBox="0 0 24 24" fill="#fff">
+                  <path
+                    d="M12 2C6.48 2 2 6.48 2 12c0 4.24 2.63 7.86 6.35 9.33-.09-.79-.16-2.01.03-2.87.18-.79 1.16-5.03 1.16-5.03s-.3-.6-.3-1.48c0-1.39.8-2.43 1.8-2.43.85 0 1.26.64 1.26 1.4 0 .86-.55 2.14-.83 3.33-.24 1 .5 1.81 1.48 1.81 1.78 0 3.15-1.87 3.15-4.58 0-2.4-1.72-4.07-4.18-4.07-2.85 0-4.52 2.13-4.52 4.34 0 .86.33 1.78.75 2.28a.3.3 0 0 1 .07.29c-.08.32-.25 1-.28 1.14-.05.19-.15.24-.35.14-1.3-.6-2.11-2.5-2.11-4.02 0-3.27 2.38-6.28 6.86-6.28 3.6 0 6.4 2.57 6.4 5.99 0 3.58-2.25 6.45-5.38 6.45-1.05 0-2.04-.55-2.38-1.19l-.65 2.46c-.23.9-.87 2.02-1.3 2.71.98.3 2 .47 3.09.47 5.52 0 10-4.48 10-10S17.52 2 12 2Z"
+                  />
+                </svg>
+              </a>
+
+              <!-- Instagram -->
+              <a
+                href="https://www.instagram.com/elextric.co.uk/"
+                target="_blank"
+                rel="noopener"
+                aria-label="Instagram"
+                style="
+                  background: linear-gradient(
+                    45deg,
+                    #fdf497,
+                    #fd5949,
+                    #d6249f,
+                    #285aeb
+                  );
+                "
+              >
+                <svg viewBox="0 0 24 24" fill="#fff">
+                  <path
+                    d="M12 2.2c3.2 0 3.6 0 4.85.07 1.17.05 2.02.25 2.75.53.75.29 1.38.68 2.02 1.32.63.63 1.02 1.27 1.32 2.02.28.73.48 1.58.53 2.75.06 1.25.06 1.65.06 4.85s0 3.6-.06 4.85c-.05 1.17-.25 2.02-.53 2.75-.3.75-.69 1.38-1.32 2.02-.64.63-1.27 1.02-2.02 1.32-.73.28-1.58.48-2.75.53-1.25.06-1.65.06-4.85.06s-3.6 0-4.85-.06c-1.17-.05-2.02-.25-2.75-.53a5.5 5.5 0 0 1-2.02-1.32 5.5 5.5 0 0 1-1.32-2.02c-.28-.73-.48-1.58-.53-2.75C2.2 15.6 2.2 15.2 2.2 12s0-3.6.06-4.85c.05-1.17.25-2.02.53-2.75.28-.73.69-1.39 1.32-2.02A5.5 5.5 0 0 1 6.13 1.06c.73-.28 1.58-.48 2.75-.53C10.13 2.2 10.5 2.2 12 2.2Z"
+                  />
+                </svg>
+              </a>
+            </div>
           </div>
-          <div>
-            <h4>Services</h4>
-            <a href="https://elextric.co.uk/services/wine-conditioning-units/"
-              >Wine conditioning</a
-            >
-            <a href="https://elextric.co.uk/norcool/">Norcool repair</a>
-            <a href="https://elextric.co.uk/corner-fridge/">Corner Fridge</a>
-            <a href="https://elextric.co.uk/contact/">Electrical</a>
+
+          <!-- COLUMN 2 -->
+          <div class="footer-column">
+            <div class="footer-group">
+              <h5>Electrical Services</h5>
+
+              <a
+                href="https://elextric.co.uk/services/electrical/domestic-electrician/"
+              >
+                Domestic electrician
+              </a>
+
+              <a
+                href="https://elextric.co.uk/services/electrical/commercial-electrician/"
+              >
+                Commercial electrician
+              </a>
+
+              <a
+                href="https://elextric.co.uk/services/electrical/testing-inspection/"
+              >
+                Electrical, inspection &amp; eicr
+              </a>
+
+              <a
+                href="https://elextric.co.uk/services/electrical/repairs-maintenance/"
+              >
+                Electrical repairs &amp; maintenance
+              </a>
+            </div>
+
+            <div class="footer-group">
+              <h5>Legal</h5>
+
+              <a href="https://elextric.co.uk/terms-and-conditions/">
+                Terms &amp; conditions
+              </a>
+
+              <a href="https://elextric.co.uk/privacy-policy/">
+                Privacy &amp; cookies policy
+              </a>
+
+              <a href="https://elextric.co.uk/refund_returns/">
+                Refund &amp; returns policy
+              </a>
+            </div>
           </div>
-          <div>
-            <h4>Products</h4>
-            <a href="https://elextric.co.uk/product-category/monoblock/"
-              >Monoblock units</a
-            >
-            <a href="https://elextric.co.uk/product-category/split/"
-              >Split systems</a
-            >
-            <a href="https://elextric.co.uk/product/winemaster-c50s/"
-              >WineMaster C50S</a
-            >
+
+          <!-- COLUMN 3 -->
+          <div class="footer-column">
+            <div class="footer-group">
+              <h5>Wine Conditioning Units</h5>
+
+              <a href="https://elextric.co.uk/product-category/monoblock/">
+                Monoblock units
+              </a>
+
+              <a href="https://elextric.co.uk/product-category/ducting/">
+                Ducting units
+              </a>
+
+              <a href="https://elextric.co.uk/product-category/split/">
+                Split units
+              </a>
+
+              <a
+                href="https://elextric.co.uk/services/wine-conditioning-units/"
+              >
+                Bespoke room
+              </a>
+            </div>
+
+            <div class="footer-group">
+              <h5>YouTube Videos</h5>
+
+              <a href="https://www.youtube.com/@elextricltd"> Electrical </a>
+
+              <a href="https://www.youtube.com/@elextricltd"> Wine cellars </a>
+            </div>
           </div>
-          <div>
-            <h4>Company</h4>
-            <a href="https://elextric.co.uk/about/">About</a>
-            <a href="https://elextric.co.uk/contact/">Contact</a>
-            <a href="https://elextric.co.uk/blog/">Blog</a>
-            <a href="https://elextric.co.uk/sitemap/">Sitemap</a>
+
+          <!-- COLUMN 4 -->
+          <div class="footer-column">
+            <div class="footer-group">
+              <h5>Bespoke Refrigeration</h5>
+
+              <a href="https://elextric.co.uk/corner-fridge/">
+                Corner fridge
+              </a>
+
+              <a href="https://elextric.co.uk/norcool/"> Norcool </a>
+
+              <a href="https://elextric.co.uk/thermocold/"> Thermocold </a>
+            </div>
+
+            <div class="footer-group">
+              <h5>Resources</h5>
+
+              <a href="https://elextric.co.uk/blog/"> Blogs </a>
+
+              <a href="https://elextric.co.uk/sitemap/"> Sitemap </a>
+            </div>
           </div>
         </div>
+
         <div class="footer-bottom">
-          <span
-            >© 2026 Elextric Ltd. Reg. No. 13521860, England. All rights
-            reserved.</span
-          >
-          <span>Services page concept — not a live site</span>
+          <span>
+            © 2026 Elextric Ltd. Reg. No. 13521860, England. All rights
+            reserved.
+          </span>
+
+          <span> Homepage concept — not a live site </span>
         </div>
       </div>
     </footer>
@@ -1372,20 +2978,22 @@
         () => header.classList.toggle("scrolled", window.scrollY > 12),
         { passive: true },
       );
+
+      /* reveal-on-scroll */
       const prefersReduced = window.matchMedia(
         "(prefers-reduced-motion: reduce)",
       ).matches;
       if (!prefersReduced && "IntersectionObserver" in window) {
         const io = new IntersectionObserver(
-          (e) => {
-            e.forEach((x) => {
-              if (x.isIntersecting) {
-                x.target.classList.add("in");
-                io.unobserve(x.target);
+          (entries) => {
+            entries.forEach((e) => {
+              if (e.isIntersecting) {
+                e.target.classList.add("in");
+                io.unobserve(e.target);
               }
             });
           },
-          { threshold: 0.12 },
+          { threshold: 0.15 },
         );
         document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
       } else {
@@ -1393,18 +3001,26 @@
           .querySelectorAll(".reveal")
           .forEach((el) => el.classList.add("in"));
       }
-      document.getElementById("search-toggle").addEventListener("click", () => {
-        const f = document.getElementById("search-flyout");
-        f.classList.toggle("open");
-        if (f.classList.contains("open")) f.querySelector("input").focus();
+
+      /* search flyout */
+      const searchToggle = document.getElementById("search-toggle");
+      const searchFlyout = document.getElementById("search-flyout");
+      const searchClose = document.getElementById("search-close");
+      searchToggle.addEventListener("click", () => {
+        searchFlyout.classList.toggle("open");
+        if (searchFlyout.classList.contains("open")) {
+          searchFlyout.querySelector("input").focus();
+        }
       });
-      document
-        .getElementById("search-close")
-        .addEventListener("click", () =>
-          document.getElementById("search-flyout").classList.remove("open"),
-        );
-      const cartDrawer = document.getElementById("cart-drawer"),
-        drawerOverlay = document.getElementById("drawer-overlay");
+      searchClose.addEventListener("click", () =>
+        searchFlyout.classList.remove("open"),
+      );
+
+      /* cart drawer */
+      const cartToggle = document.getElementById("cart-toggle");
+      const cartDrawer = document.getElementById("cart-drawer");
+      const cartClose = document.getElementById("cart-close");
+      const drawerOverlay = document.getElementById("drawer-overlay");
       function openCart() {
         cartDrawer.classList.add("open");
         drawerOverlay.classList.add("open");
@@ -1415,31 +3031,254 @@
         drawerOverlay.classList.remove("open");
         document.body.classList.remove("lock");
       }
-      document
-        .getElementById("cart-toggle")
-        .addEventListener("click", openCart);
-      document
-        .getElementById("cart-close")
-        .addEventListener("click", closeCart);
+      cartToggle.addEventListener("click", openCart);
+      cartClose.addEventListener("click", closeCart);
       drawerOverlay.addEventListener("click", closeCart);
-      const mobileMenu = document.getElementById("mobile-menu"),
-        mobileOverlay = document.getElementById("mobile-menu-overlay");
-      document.getElementById("mobile-toggle").addEventListener("click", () => {
+
+      /* ---------------------------------------------------
+         MOBILE MENU
+      --------------------------------------------------- */
+      const mobileToggle = document.getElementById("mobile-toggle");
+      const mobileMenu = document.getElementById("mobile-menu");
+      const mobileMenuOverlay = document.getElementById("mobile-menu-overlay");
+      const mobileMenuClose = document.getElementById("mobile-menu-close");
+
+      function openMobileMenu() {
         mobileMenu.classList.add("open");
-        mobileOverlay.classList.add("open");
-        document.body.classList.add("lock");
-      });
-      document
-        .getElementById("mobile-menu-close")
-        .addEventListener("click", () => {
-          mobileMenu.classList.remove("open");
-          mobileOverlay.classList.remove("open");
-          document.body.classList.remove("lock");
-        });
-      mobileOverlay.addEventListener("click", () => {
+        mobileMenuOverlay.classList.add("open");
+        document.body.classList.add("menu-lock");
+        mobileToggle.setAttribute("aria-expanded", "true");
+      }
+      function closeMobileMenu() {
         mobileMenu.classList.remove("open");
-        mobileOverlay.classList.remove("open");
-        document.body.classList.remove("lock");
+        mobileMenuOverlay.classList.remove("open");
+        document.body.classList.remove("menu-lock");
+        mobileToggle.setAttribute("aria-expanded", "false");
+      }
+      if (mobileToggle) {
+        mobileToggle.addEventListener("click", openMobileMenu);
+        mobileMenuClose.addEventListener("click", closeMobileMenu);
+        mobileMenuOverlay.addEventListener("click", closeMobileMenu);
+        mobileMenu.querySelectorAll(".mm-simple").forEach((link) => {
+          link.addEventListener("click", closeMobileMenu);
+        });
+        const mmServicesToggle = document.getElementById("mm-services-toggle");
+        const mmServicesGroup = document.getElementById("mm-services-group");
+        mmServicesToggle.addEventListener("click", () => {
+          mmServicesGroup.classList.toggle("open");
+        });
+      }
+
+      /* ---------------------------------------------------
+         DESKTOP MEGA MENU (click/keyboard support alongside hover)
+      --------------------------------------------------- */
+      const servicesNavItem = document.getElementById("services-nav-item");
+      const servicesMegaTrigger = document.getElementById(
+        "services-mega-trigger",
+      );
+      if (servicesNavItem && servicesMegaTrigger) {
+        servicesMegaTrigger.addEventListener("click", (e) => {
+          e.stopPropagation();
+          const isOpen = servicesNavItem.classList.toggle("open");
+          servicesMegaTrigger.setAttribute("aria-expanded", isOpen);
+        });
+        document.addEventListener("click", (e) => {
+          if (!servicesNavItem.contains(e.target)) {
+            servicesNavItem.classList.remove("open");
+            servicesMegaTrigger.setAttribute("aria-expanded", "false");
+          }
+        });
+        document.addEventListener("keydown", (e) => {
+          if (e.key === "Escape") {
+            servicesNavItem.classList.remove("open");
+            servicesMegaTrigger.setAttribute("aria-expanded", "false");
+          }
+        });
+      }
+
+      /* ---------------------------------------------------
+         ADD TO QUOTE (service-list cart / quote drawer)
+      --------------------------------------------------- */
+      const quoteState = new Map();
+      const cartCountBadge = document.querySelector(".cart-count");
+      const cartCountLabel = document.getElementById("cart-count-label");
+      const cartItemsWrap = document.getElementById("cart-items");
+      const cartEmpty = document.getElementById("cart-empty");
+      const cartFoot = document.getElementById("cart-foot");
+      const cartSubtotalAmt = document.getElementById("cart-subtotal-amt");
+
+      function renderQuote() {
+        cartItemsWrap.innerHTML = "";
+        const items = [...quoteState.values()];
+        cartCountBadge.textContent = items.length;
+        cartCountLabel.textContent = items.length;
+        cartEmpty.classList.toggle("show", items.length === 0);
+        cartFoot.style.display = items.length ? "flex" : "none";
+        cartFoot.style.flexDirection = "column";
+        let total = 0;
+        items.forEach((item) => {
+          total += item.price;
+          const row = document.createElement("div");
+          row.className = "cart-item";
+          row.innerHTML = `
+            <div class="thumb"><img src="${item.img}" alt="${item.name}" /></div>
+            <div>
+              <h4>${item.name}</h4>
+              <div class="meta">Free consultation · Engineer call-out</div>
+            </div>
+            <div class="price">From £${item.price.toFixed(2)}</div>
+            <button class="remove-item" data-remove="${item.id}" aria-label="Remove ${item.name}">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6 6 18" /></svg>
+            </button>
+          `;
+          cartItemsWrap.appendChild(row);
+        });
+        cartSubtotalAmt.textContent = `£${total.toFixed(2)}`;
+        cartItemsWrap.querySelectorAll("[data-remove]").forEach((btn) => {
+          btn.addEventListener("click", () => {
+            const id = btn.dataset.remove;
+            quoteState.delete(id);
+            syncQuoteButtons();
+            renderQuote();
+          });
+        });
+      }
+
+      function syncQuoteButtons() {
+        document.querySelectorAll(".btn-quote").forEach((btn) => {
+          const id = btn.dataset.id;
+          btn.classList.toggle("added", quoteState.has(id));
+        });
+      }
+
+      document.querySelectorAll(".btn-quote").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const id = btn.dataset.id;
+          if (quoteState.has(id)) {
+            quoteState.delete(id);
+          } else {
+            quoteState.set(id, {
+              id,
+              name: btn.dataset.name,
+              price: parseFloat(btn.dataset.price),
+              img: btn.dataset.img,
+            });
+            openCart();
+          }
+          syncQuoteButtons();
+          renderQuote();
+        });
+      });
+      renderQuote();
+
+      /* ---------------------------------------------------
+         BLOG MARQUEE — duplicate track for seamless loop
+      --------------------------------------------------- */
+      const blogTrack = document.getElementById("blog-track");
+      if (blogTrack) {
+        blogTrack.innerHTML += blogTrack.innerHTML;
+      }
+
+      /* ---------------------------------------------------
+         MULTI-STEP CONTACT FORM
+      --------------------------------------------------- */
+      const ctaForm = document.getElementById("cta-form");
+      if (ctaForm) {
+        const steps = ctaForm.querySelectorAll(".form-step");
+        const fsiSteps = ctaForm.querySelectorAll(".fsi-step");
+        function goToStep(n) {
+          steps.forEach((s) =>
+            s.classList.toggle("active", Number(s.dataset.step) === n),
+          );
+          fsiSteps.forEach((s) => {
+            const stepNum = Number(s.dataset.fsi);
+            s.classList.toggle("active", stepNum === n);
+            s.classList.toggle("done", stepNum < n);
+          });
+        }
+        ctaForm.querySelectorAll("[data-next]").forEach((btn) => {
+          btn.addEventListener("click", () => {
+            if (btn.closest(".form-step").dataset.step === "1") {
+              const required = [
+                "cf-name",
+                "cf-email",
+                "cf-postcode",
+                "cf-phone",
+              ];
+              const missing = required.some(
+                (id) => !document.getElementById(id).value.trim(),
+              );
+              if (missing) {
+                required.forEach((id) => {
+                  const el = document.getElementById(id);
+                  el.style.borderColor = el.value.trim()
+                    ? "var(--line)"
+                    : "#c0392b";
+                });
+                return;
+              }
+            }
+            goToStep(Number(btn.dataset.next));
+          });
+        });
+        ctaForm.querySelectorAll("[data-prev]").forEach((btn) => {
+          btn.addEventListener("click", () =>
+            goToStep(Number(btn.dataset.prev)),
+          );
+        });
+        ctaForm.addEventListener("submit", (e) => {
+          e.preventDefault();
+          steps.forEach((s) => (s.style.display = "none"));
+          ctaForm.querySelector(".form-steps-indicator").style.display = "none";
+          document.getElementById("cf-success").style.display = "block";
+        });
+      }
+
+      /* gallery filter */
+      const filterBtns = document.querySelectorAll(".filter-btn");
+      const galleryItems = document.querySelectorAll(".gallery-item");
+      filterBtns.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          filterBtns.forEach((b) => b.classList.remove("active"));
+          btn.classList.add("active");
+          const filter = btn.dataset.filter;
+          galleryItems.forEach((item) => {
+            const show = filter === "all" || item.dataset.cat === filter;
+            item.classList.toggle("hide", !show);
+          });
+        });
+      });
+
+      /* testimonial slider */
+      const track = document.getElementById("t-track");
+      const slides = track.children;
+      const dotsWrap = document.getElementById("t-dots");
+      let current = 0;
+      for (let i = 0; i < slides.length; i++) {
+        const dot = document.createElement("button");
+        if (i === 0) dot.classList.add("active");
+        dot.addEventListener("click", () => goTo(i));
+        dotsWrap.appendChild(dot);
+      }
+      function goTo(i) {
+        current = (i + slides.length) % slides.length;
+        track.style.transform = `translateX(-${current * 100}%)`;
+        [...dotsWrap.children].forEach((d, idx) =>
+          d.classList.toggle("active", idx === current),
+        );
+      }
+      document
+        .getElementById("t-prev")
+        .addEventListener("click", () => goTo(current - 1));
+      document
+        .getElementById("t-next")
+        .addEventListener("click", () => goTo(current + 1));
+      let autoplay = setInterval(() => goTo(current + 1), 6000);
+      document
+        .querySelector(".t-slider")
+        .addEventListener("mouseenter", () => clearInterval(autoplay));
+      document.querySelector(".t-slider").addEventListener("mouseleave", () => {
+        autoplay = setInterval(() => goTo(current + 1), 6000);
       });
     </script>
   </body>
